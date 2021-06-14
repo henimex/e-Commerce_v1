@@ -1,4 +1,6 @@
 using Infrastructure.DataContext;
+using Infrastructure.Implementations.Abstract;
+using Infrastructure.Implementations.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +23,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database=StoreDatabase;Trusted_Connection=True;MultipleActiveResultSets=True"));
