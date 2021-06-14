@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete.EntityFramework;
+using Infrastructure.DataContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers

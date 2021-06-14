@@ -1,4 +1,4 @@
-using DataAccess.Concrete.EntityFramework;
+using Infrastructure.DataContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +24,7 @@ namespace API
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database=StoreDatabase;Trusted_Connection=True:MultipleActiveResultSets=True"));
+            //services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database=StoreDatabase;Trusted_Connection=True;MultipleActiveResultSets=True"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
