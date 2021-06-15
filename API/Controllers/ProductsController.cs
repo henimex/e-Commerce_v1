@@ -27,17 +27,31 @@ namespace API.Controllers
         /// Get All Product List Test
         /// </summary>
         /// <returns></returns>
-        [HttpGet("get-all")]
+        [HttpGet("ga-products")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
             var data = await _productRepository.GetProductsAsync();
             return Ok(data);
         }
 
-        [HttpGet("get-single")]
+        [HttpGet("gs-product")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            return await _productRepository.GetProductByIdAsync(id);
+            return Ok(await _productRepository.GetProductByIdAsync(id));
+        }
+
+        [HttpGet("ga-product-types")]
+        public async Task<ActionResult<List<Product>>> GetProductTypes()
+        {
+            var data = await _productRepository.GetProductTypesAsync();
+            return Ok(data);
+        }
+
+        [HttpGet("ga-product-brands")]
+        public async Task<ActionResult<List<Product>>> GetProductBrands()
+        {
+            var data = await _productRepository.GetProductBrandsAsync();
+            return Ok(data);
         }
     }
 }
