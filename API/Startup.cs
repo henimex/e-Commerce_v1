@@ -1,3 +1,5 @@
+using Core.DataAccess.Abstract;
+using Core.DataAccess.Concrete;
 using Infrastructure.DataContext;
 using Infrastructure.Implementations.Abstract;
 using Infrastructure.Implementations.Concrete;
@@ -24,6 +26,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database=StoreDatabase;Trusted_Connection=True;MultipleActiveResultSets=True"));

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Core.DataAccess.Concrete;
 
 namespace Entities.Concrete.EntityFramework
 {

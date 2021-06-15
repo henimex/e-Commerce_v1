@@ -1,4 +1,6 @@
-﻿namespace Entities.Concrete.EntityFramework
+﻿using Core.DataAccess.Concrete;
+
+namespace Entities.Concrete.EntityFramework
 {
     public class ProductType : BaseEntity
     {
