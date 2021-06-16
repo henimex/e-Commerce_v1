@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.DataAccess.Abstract;
 using Core.DataAccess.Concrete;
+using Core.Specifications;
 using Infrastructure.DataContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Implementations.Concrete
 {
@@ -16,14 +18,26 @@ namespace Infrastructure.Implementations.Concrete
             _context = context;
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public Task<IReadOnlyList<T>> GetListAsync()
+        public async Task<IReadOnlyList<T>> GetListAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
+
+        public Task<T> GetEntityWithSpec(ISpecifications<T> spec)
         {
             throw new NotImplementedException();
+            //TODO: Implementations
+        }
+
+        public Task<IReadOnlyList<T>> ListAsync(ISpecifications<T> spec)
+        {
+            throw new NotImplementedException();
+            //TODO: Implementations
         }
     }
 }
