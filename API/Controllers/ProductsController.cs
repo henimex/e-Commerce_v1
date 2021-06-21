@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.DataAccess.Abstract;
+using Core.Specifications;
 using Entities.Concrete.EntityFramework;
 using Infrastructure.DataContext;
 using Infrastructure.Implementations.Abstract;
@@ -34,7 +35,9 @@ namespace API.Controllers
         [HttpGet("ga-products")]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            var data = await _productRepository.GetListAsync();
+            var spec = new ProductWithTypeAndBrands();
+
+            var data = await _productRepository.ListAsync(spec);
             return Ok(data);
         }
 
